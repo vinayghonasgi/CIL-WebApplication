@@ -1,7 +1,8 @@
 import React from 'react'
 import UserList from '../containers/user-lists'
 import UserDetails from '../containers/user-details'
-import ContactForm from '../containers/contact-from'
+//import ContactForm from '../containers/contact-from'
+import CallForm from '../containers/call-form'
 
 export default class Greetings extends React.Component {
 submit (values) {
@@ -16,7 +17,9 @@ submit (values) {
                 <hr />
                 <h2>User Details</h2>
                 <UserDetails />
-                <ContactForm onSubmit={this.submit}/>
+                <hr />
+                <CallForm />
+                {/*<ContactForm onSubmit={this.submit}/>*/}
             </div>
         );
     }

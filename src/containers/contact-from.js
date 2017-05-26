@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import {connect} from 'react-redux'
+import  { bindActionCreators } from 'redux'
+import { submitUser } from '../actions/index'
 
 const renderField = ({type, label, input, field, meta : {touched, error}}) => (
     <div className="input-row">
@@ -35,11 +38,15 @@ const renderField = ({type, label, input, field, meta : {touched, error}}) => (
       } else {
         //submit the from
         console.log("valid submission");
+         //this.props.submitUser({firstName, lastName, email});
+        
       }
 
     }
-    const ContactFormFunc = ({handleSubmit})=> (
-      <form onSubmit={handleSubmit(submit)}>
+    class ContactForm extends Component {
+      render() {
+        return(
+            <form onSubmit={this.submit}>
         <div>
           
           <Field name="firstName" label="First Name" component={renderField} type="text" required/>
@@ -54,13 +61,23 @@ const renderField = ({type, label, input, field, meta : {touched, error}}) => (
         </div>
         <button type="submit">Submit</button>
       </form>
-    );
+        );
+      }
+      
+    }
   
 
 
 // Decorate the form component
-const ContactForm = reduxForm({
+ContactForm = reduxForm({
   form: 'contact' // a unique name for this form
-})(ContactFormFunc);
+})(ContactForm);
 
 export default ContactForm;
+
+/*function matchDispatchToProps(dispatch) {
+    return bindActionCreators({submitUser: submitUser}, dispatch);
+}
+
+export default connect(matchDispatchToProps)(ContactForm);
+*/

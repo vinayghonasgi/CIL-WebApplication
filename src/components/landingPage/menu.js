@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginModal from './login/login-modal'
 
+
 export default class Menu extends React.Component {
    constructor (props) {
         super(props);
@@ -44,6 +45,7 @@ export default class Menu extends React.Component {
          </div>
       </nav>
       <LoginModal showModal={this.state.showModal} hideModal={this.close}/>
+      
       </div>
 
       );

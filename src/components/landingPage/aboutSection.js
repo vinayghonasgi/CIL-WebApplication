@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router';
 
 export default class AboutSection extends React.Component {
    render() {
@@ -17,7 +18,6 @@ export default class AboutSection extends React.Component {
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Quick sharing of concepts with clients to arrive at winning ideas.</li>
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Within walking distance of stakeholders and end-users.</li>
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Reduces the time from business idea to business value.</li>
-                      
                 </ul>
             </div>
           </div>

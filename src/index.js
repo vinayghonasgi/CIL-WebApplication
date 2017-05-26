@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Router, useRouterHistory } from 'react-router';
+import { Router, useRouterHistory, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import {createMemoryHistory} from 'history';
 import allReducers from './reducers';
@@ -22,6 +22,6 @@ const store = createStore(
 );
 
 render(<Provider store={store}>
-	        <Router history={appHistory} routes={routes} />
+	        <Router history = {browserHistory} routes={routes} />
        </Provider>
        , document.getElementById('app'));

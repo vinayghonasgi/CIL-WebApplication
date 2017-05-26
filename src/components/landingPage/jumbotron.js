@@ -1,4 +1,5 @@
 import React from 'react'
+import Greetings from '../Greetings'
  
 export default class Jumbotron extends React.Component {
   
@@ -16,7 +17,7 @@ export default class Jumbotron extends React.Component {
                        </p>
                   </div>
                 </div>
-              </div>
+              </div>              
          </div>       
                
          );
