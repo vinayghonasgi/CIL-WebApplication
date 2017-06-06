@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: zuulgateway
+
+server:
+  port: 8764
+    
+zuul:
+  prefix: /api
+  routes:
+    cilapplication:
+      path: /cilapplication/**
+      sensitive-headers: Cookie,Set-Cookie        
+      service-id: CILAPPLICATION
+    cildashboard:
+      path: /cildashboard/**
+      sensitive-headers: Cookie,Set-Cookie        
+      service-id: CILDASHBOARD
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+
+  

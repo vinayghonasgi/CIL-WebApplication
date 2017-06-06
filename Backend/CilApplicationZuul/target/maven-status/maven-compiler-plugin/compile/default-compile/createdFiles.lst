@@ -1,0 +1,3 @@
+com\hcl\cil\zuul\filter\pre\SimpleFilter.class
+com\hcl\cil\zuul\ApplicationZuul.class
+com\hcl\cil\zuul\filter\post\AccessLogFilter.class
