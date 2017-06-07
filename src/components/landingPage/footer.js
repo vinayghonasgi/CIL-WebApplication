@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
       
         return (
 <div>
-   <footer className="container-fluid footer-up text-center">
+   <footer className="container-fluid landing footer-up text-center">
          <a href="#myPage" title="To Top" className="footer-up">
          <span className="glyphicon glyphicon-chevron-up"></span>
          </a>

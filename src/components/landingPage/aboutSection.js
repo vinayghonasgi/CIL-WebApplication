@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class AboutSection extends React.Component {
    render() {
         return (
-     <div id="about" className="container-fluid">
+     <div id="about" className="container-fluid landing">
           <div className="row">
             <div className="col-sm-12">
                <h2 className="text-center">ABOUT CO-INNOVATION LAB</h2>
@@ -18,6 +18,7 @@ export default class AboutSection extends React.Component {
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Quick sharing of concepts with clients to arrive at winning ideas.</li>
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Within walking distance of stakeholders and end-users.</li>
                       <li><img className="tick-icon" src="./src/assets/images/svg/tick.svg" alt=""></img>Reduces the time from business idea to business value.</li>
+                      {/*<li><Link to="dashboard">Home</Link></li>*/}
                 </ul>
             </div>
           </div>

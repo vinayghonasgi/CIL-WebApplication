@@ -3,7 +3,7 @@ import React from 'react'
 export default class ContactUs extends React.Component {
    render() {
         return (
-<div id="contact" className="container-fluid">
+<div id="contact" className="container-fluid landing">
          <h2 className="text-center">CONTACT</h2>
 		 <hr/>
          <div className="row">

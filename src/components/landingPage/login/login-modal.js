@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/lib/Modal';
 import ForgotpwdModal from './forgotpwd-modal';
 import {connect} from 'react-redux'
 import  { bindActionCreators } from 'redux'
-import { getUser } from '../../../actions/index'
+import { getUser, getDashboard } from '../../../actions/index'
 import { browserHistory } from 'react-router';
 import TextFieldGroup from '../../../common/textFieldGroup';
 import validateInput from '../../../validations/login';
@@ -51,25 +51,24 @@ class LoginModal extends React.Component {
     return isValid;
   }
 
-  submit() {
-        //e.preventDefault();
-        console.log("form submitted");
+  submit() {        
          if (this.isValid()) {
              this.setState({ errors: {}, isLoading: true });
+             
+             browserHistory.push('/dashboard');
+                /*
              this.props.getUser({username: this.state.username, password: this.state.password})
-                .then((res) => {
-                    
-                    //console.log(uesrRes)
+                .then((res) => {                       
                     if(res.data.response.toLowerCase() === "true"){                        
                         browserHistory.push('/dashboard');
                         alert("success login")
                     }
                     else this.setState({ loginError : "Invalid username or password" });
-
                 })
-
-         }
-        
+                .catch((error) => {
+                    this.setState({ loginError : error });
+                })*/
+         }       
         
     }
     render () {
@@ -123,12 +122,13 @@ class LoginModal extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.loginUser
+        user: state.loginUser,
+        //dashboard: state.dashboard
     };
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({getUser: getUser}, dispatch);
+    return bindActionCreators({getUser: getUser, getDashboard: getDashboard}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(LoginModal);

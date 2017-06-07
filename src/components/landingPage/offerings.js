@@ -3,7 +3,7 @@ import React from 'react'
 export default class Offerings extends React.Component {
    render() {
         return (
-   <div id="offerings" className="container-fluid text-center">
+   <div id="offerings" className="container-fluid landing text-center">
          <h2 className="text-center">OFFERINGS</h2>
          <hr/>
          <div className="row slideanim ">

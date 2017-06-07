@@ -13,17 +13,17 @@ export default class ResetpwdModal extends React.Component {
             showModal: false,
             resetPwdError: '' //state for login Modal
         }
-        this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+        this.closeResetSuccess = this.closeResetSuccess.bind(this);
+        this.openResetSuccess = this.openResetSuccess.bind(this);
         this.onChange = this.onChange.bind(this);
         this.submit = this.submit.bind(this);
     }
    
-         close() {
+         closeResetSuccess() {
             this.setState({ showModal: false }); // Hide login modal
             
         }
-        open() {
+        openResetSuccess() {
         	this.props.hideModal();
             this.setState({ showModal: true }); //Show login modal
              
@@ -41,7 +41,11 @@ export default class ResetpwdModal extends React.Component {
         }
 
         submit() {
-            this.isValid();
+            if (this.isValid()) {
+                this.setState({ errors: {}, isLoading: true });
+                this.openResetSuccess()
+                //this.props.changePassword({newpass: this.state.password, confirmpass: this.state.confirmPassword})
+            }
                 /*if (this.isValid()) {
                     this.setState({ errors: {}, isLoading: true });
                     this.props.changePassword({newpass: this.state.password, confirmpass: this.state.confirmPassword})

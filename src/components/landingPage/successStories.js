@@ -3,7 +3,7 @@ import React from 'react'
 export default class SuccessStories extends React.Component {
    render() {
         return (
-<div id="success" className="container-fluid text-center bg-grey">
+<div id="success" className="container-fluid landing text-center bg-grey">
          <h2 className="text-center">SUCCESS STORIES</h2>
          <hr/>
          <h4>What we have created</h4>
