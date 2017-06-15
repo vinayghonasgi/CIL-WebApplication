@@ -34,7 +34,6 @@ public class Application extends org.springframework.boot.web.support.SpringBoot
 	{
 		return builder.sources(Application.class);
 	}
-    
     @LoadBalanced
 	@Bean
     public RestTemplate getRestTemplate(){

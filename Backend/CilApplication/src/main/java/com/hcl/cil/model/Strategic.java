@@ -2,32 +2,26 @@ package com.hcl.cil.model;
 
 public class Strategic 
 {
-	private  String id = "Strategic Partner";
-	private  String main;
-	private  String logo;
-	private  String status;
-	public String getId() {
-		return id;
+	private  String strategic_mainheading;
+	private  String strategic_logo;
+	private  String strategic_status;
+	public String getStrategic_mainheading() {
+		return strategic_mainheading;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setStrategic_mainheading(String strategic_mainheading) {
+		this.strategic_mainheading = strategic_mainheading;
 	}
-	public String getMain() {
-		return main;
+	public String getStrategic_logo() {
+		return strategic_logo;
 	}
-	public void setMain(String main) {
-		this.main = main;
+	public void setStrategic_logo(String strategic_logo) {
+		this.strategic_logo = strategic_logo;
 	}
-	public String getLogo() {
-		return logo;
+	public String getStrategic_status() {
+		return strategic_status;
 	}
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setStrategic_status(String strategic_status) {
+		this.strategic_status = strategic_status;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 }

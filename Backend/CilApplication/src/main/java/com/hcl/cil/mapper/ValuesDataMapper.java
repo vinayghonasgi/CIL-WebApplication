@@ -7,27 +7,32 @@ import java.util.ArrayList;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.hcl.cil.model.Values;
+import com.hcl.cil.model.ValuesData;
 
 
 public class ValuesDataMapper implements RowMapper<Values>
 {
-	private ArrayList<String> values_list;
-
 	@Override
 	public Values mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
-		values_list = new ArrayList<String>();
+		String[] str;
+		ValuesData vdata;
+		ArrayList<ValuesData> values_data = new ArrayList<>();
 		Values valuesInfo = new Values();
-		valuesInfo.setId(rs.getString("keyvalues_id"));
-		valuesInfo.setMain(rs.getString("keyvalues_heading"));
-  		
-		String[] list = rs.getString("keyvalues_list").split("~");
-		for(int i = 0; i<list.length; i++)
-		{
-			values_list.add(list[i]);
+		
+		valuesInfo.setValues_mainheading(rs.getString("keyvalues_heading"));
+  				
+		String[] vlist = rs.getString("keyvalues_list").split("#");
+		for(int i = 0; i<vlist.length; i++)
+		{	
+ 			vdata = new ValuesData();
+ 			str = vlist[i].split("~");
+ 			vdata.setValues_heading(str[0]);
+ 			vdata.setValues_description(str[1]);
+ 			values_data.add(vdata);	
 		}
 		
-		valuesInfo.setList(values_list);
+		valuesInfo.setValues_info(values_data);
 		return valuesInfo;
 	}
 }

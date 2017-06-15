@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.hcl.cil.dao.LandingDao;
 import com.hcl.cil.mapper.AboutDataMapper;
 import com.hcl.cil.mapper.ContactDataMapper;
 import com.hcl.cil.mapper.HeaderDataMapper;

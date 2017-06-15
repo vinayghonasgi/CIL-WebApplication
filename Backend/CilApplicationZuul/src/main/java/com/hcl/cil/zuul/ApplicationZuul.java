@@ -1,6 +1,5 @@
 package com.hcl.cil.zuul;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -14,7 +13,6 @@ import com.hcl.cil.zuul.filter.pre.SimpleFilter;
 
 @EnableZuulProxy
 @SpringBootApplication
-//@EnableAutoConfiguration
 @EnableEurekaClient
 @CrossOrigin
 public class ApplicationZuul
@@ -23,6 +21,7 @@ public class ApplicationZuul
     {
         SpringApplication.run(ApplicationZuul.class, args);
     }
+	
 	@Bean
 	public AccessLogFilter accessFilter() 
 	{

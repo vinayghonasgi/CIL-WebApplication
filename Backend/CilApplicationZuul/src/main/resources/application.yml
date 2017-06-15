@@ -1,26 +1,37 @@
-spring:
-  application:
-    name: zuulgateway
-
-server:
-  port: 8764
-    
-zuul:
-  prefix: /api
-  routes:
-    cilapplication:
-      path: /cilapplication/**
-      sensitive-headers: Cookie,Set-Cookie        
-      service-id: CILAPPLICATION
-    cildashboard:
-      path: /cildashboard/**
-      sensitive-headers: Cookie,Set-Cookie        
-      service-id: CILDASHBOARD
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-      
-
-  
+#spring:
+#  application:
+#    name: zuulgateway
+#
+#server:
+#  port: 8764
+#    
+#zuul:
+#  prefix: /api
+#  routes:
+#    cilapplication:
+#      path: /cilapplication/**
+#      sensitive-headers: Cookie,Set-Cookie        
+#      service-id: CILAPPLICATION
+#    cildashboard:
+#      path: /cildashboard/**
+#      sensitive-headers: Cookie,Set-Cookie        
+#      service-id: CILDASHBOARD
+##  host:
+##    connect-timeout-millis: 5000
+##    socket-timeout-millis: 10000
+##
+##hystrix:
+##    command:
+##        default:
+##            execution:
+##                isolation:
+##                    thread:
+##                        timeoutInMilliseconds: 10000
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#      
+#
+#  

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hcl.cil.dao.LandingDao;
 import com.hcl.cil.model.*;
-import com.hcl.cil.repository.LandingDao;
 
 @Service
 public class ContentService

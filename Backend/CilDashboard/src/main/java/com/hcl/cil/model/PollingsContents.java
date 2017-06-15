@@ -1,7 +1,5 @@
 package com.hcl.cil.model;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +7,15 @@ import org.springframework.stereotype.Service;
 public class PollingsContents 
 {
 	@Autowired
-	private List<PollingsResult> polling;
+	private PollingsResult polling;
 
-	public List<PollingsResult> getPolling() {
+	public PollingsResult getPolling() 
+	{
 		return polling;
 	}
 
-	public void setPolling(List<PollingsResult> polling) {
+	public void setPolling(PollingsResult polling) 
+	{
 		this.polling = polling;
 	}
-
-	
 }

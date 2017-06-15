@@ -1,5 +1,6 @@
 package com.hcl.cil.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -29,20 +30,15 @@ public class ProjectsRepositoryImpl implements ProjectsDao
 		template = new JdbcTemplate();
 		template.setDataSource(dataSource);	
 	}
-	
-	@Autowired
-	List<ProjectsDesc> projectList;
-	
+	private List<ProjectsDesc> projectList  = new ArrayList<ProjectsDesc>();
 	@Override
 	public List<ProjectsDesc>  getProjectsData(ProjectIdRequest projectid) 
 	{		
 		SqlRowSet rs = template.queryForRowSet("SELECT * FROM ongoingprojects WHERE projects_id = " + projectid.getId() + "");
 		if (rs.next()) 
 		{
-			List<ProjectsDesc> projectList =  template.query("SELECT * FROM ongoingprojects WHERE projects_id = " + projectid.getId() + "",new ProjectsDescDataMapper());
-			this.projectList = projectList;
-			return projectList;			
+			projectList =  template.query("SELECT * FROM ongoingprojects WHERE projects_id = " + projectid.getId() + "",new ProjectsDescDataMapper());
 		}
-		return projectList;	
+		return projectList;			
 	}
 }

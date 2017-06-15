@@ -1,16 +1,22 @@
 package com.hcl.cil.security;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.hcl.cil.model.ForgotUser;
+
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Repository
 public class ForgotJWTRequestRepository implements ForgotJWTRequestDao 
 {
+	Logger logger = LoggerFactory.getLogger(AuthJWTRequestRepository.class);
 
 	@Autowired
 	private ForgotJWT forgotJWT;
@@ -32,9 +38,13 @@ public class ForgotJWTRequestRepository implements ForgotJWTRequestDao
 				.signWith(SignatureAlgorithm.HS256,"secret".getBytes("UTF-8")).compact();
 			forgotJWT.setForgotJwtEncryp(jwts);
 	    }
-	    catch(Exception e)
+	    catch(JwtException | UnsupportedEncodingException e)
 	    {
-	    	System.out.println("Exception: " + e);	    	    	
+	    	logger.info("JwtException :: < " + e + " >");	    	    	
+	    }
+	    catch(Exception a)
+	    {
+	    	logger.info("Exception :: < " + a + " >");
 	    }
 		return forgotJWT;
 	}

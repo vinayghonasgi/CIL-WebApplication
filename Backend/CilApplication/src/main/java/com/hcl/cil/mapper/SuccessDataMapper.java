@@ -6,27 +6,34 @@ import java.util.ArrayList;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import com.hcl.cil.model.ServicesData;
 import com.hcl.cil.model.Success;
+import com.hcl.cil.model.SuccessData;
 
 public class SuccessDataMapper implements RowMapper<Success>
 {
-	private  ArrayList<String> success_stories;
 	@Override
 	public Success mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
-		success_stories = new ArrayList<String>();
-		Success successInfo = new Success();
-		successInfo.setId(rs.getString("success_id"));
-		successInfo.setMain(rs.getString("success_heading"));
-		successInfo.setSub(rs.getString("success_subheading"));
+		String[] str;
+		SuccessData sdata;
 		
-		String[] list = rs.getString("success_list").split("~");
-		for(int i = 0; i<list.length; i++)
-		{
-			success_stories.add(list[i]);
+		ArrayList<SuccessData> success_data = new ArrayList<>();
+		Success successInfo = new Success();
+		successInfo.setSuccess_mainheading(rs.getString("success_heading"));
+		successInfo.setSuccess_subheading(rs.getString("success_subheading"));
+		
+		String[] slist = rs.getString("success_list").split("#");
+		for(int i = 0; i<slist.length; i++)
+		{	
+			sdata = new SuccessData();
+ 			str = slist[i].split("~");
+ 			sdata.setSuccess_heading(str[0]);
+ 			sdata.setSuccess_description(str[1]);
+ 			success_data.add(sdata);	
 		}
 		
-		successInfo.setList(success_stories);		
+		successInfo.setSuccess_info(success_data);		
 		return successInfo;
 	}
 }

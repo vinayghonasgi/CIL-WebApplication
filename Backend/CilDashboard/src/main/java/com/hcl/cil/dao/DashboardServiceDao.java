@@ -12,4 +12,6 @@ public interface DashboardServiceDao
 	public List<HclProjectList> getInternalProjectsData();
 	public List<HclProjectList> getExternalProjectsData();
 	public List<HclEventList> getEventsData();
+	public HclPollingList getPollingsData();
+	public UserResponse getResponse();
 }

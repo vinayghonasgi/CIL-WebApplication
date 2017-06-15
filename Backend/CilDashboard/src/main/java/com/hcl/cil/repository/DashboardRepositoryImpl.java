@@ -16,6 +16,7 @@ import com.hcl.cil.mapper.ProjectListDataMapper;
 import com.hcl.cil.model.HclEventList;
 import com.hcl.cil.model.HclPollingList;
 import com.hcl.cil.model.HclProjectList;
+import com.hcl.cil.model.UserResponse;
 
 @Repository
 public class DashboardRepositoryImpl implements DashboardDao
@@ -25,8 +26,9 @@ public class DashboardRepositoryImpl implements DashboardDao
 	@Autowired
 	private DataSource dataSource;
 	
-	
-			
+	@Autowired
+	private UserResponse model;
+				
 	@PostConstruct
 	public void init()
 	{
@@ -56,9 +58,15 @@ public class DashboardRepositoryImpl implements DashboardDao
 	}
 
 	@Override
-	public List<HclPollingList> getPollingsData() 
+	public HclPollingList getPollingsData() 
 	{
-		List<HclPollingList> polling = template.query("SELECT * FROM pollings where question_id = (select MAX(question_id) from pollings)" ,new PollingsDataMapper());
+		HclPollingList polling = template.queryForObject("SELECT * FROM pollings where question_id = (select MAX(question_id) from pollings)" ,new PollingsDataMapper());
 		return polling;
+	}
+
+	@Override
+	public UserResponse getResponse() 
+	{
+		return model;
 	}
 }

@@ -1,7 +1,5 @@
 package com.hcl.cil.repository;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
@@ -32,53 +30,40 @@ public class PollingsRepositoryImpl implements PollingsDao
 	}
 	
 	@Autowired
-	List<PollingsResult> pollingsResult;
-	
+	private PollingsResult pollingsResult;
+		
 	@Override
-	public List<PollingsResult> getPollingsData(PollingRequest polling) 
+	public PollingsResult getPollingsData(PollingRequest polling) 
 	{
 		SqlRowSet rs = template.queryForRowSet("SELECT * FROM pollings WHERE question_id = " + polling.getId() + "");
 		if (rs.next()) 
 		{
 			if(rs.getString("question_option1").equals(polling.getOptions()) == true)
 			{
-				int poll = rs.getInt("question_option1_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option1_poll = " + poll + " where question_id = " + polling.getId() + "");
+				int poll1 = rs.getInt("question_option1_poll");
+				poll1++;
+				template.update("UPDATE pollings SET question_option1_poll = " + poll1 + " where question_id = " + polling.getId() + "");
 			}
 			if(rs.getString("question_option2").equals(polling.getOptions()) == true)
 			{
-				int poll = rs.getInt("question_option2_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option2_poll = " + poll + " where question_id = " + polling.getId() + "");
+				int poll2  = rs.getInt("question_option2_poll");
+				poll2++;
+				template.update("UPDATE pollings SET question_option2_poll = " + poll2 + " where question_id = " + polling.getId() + "");
 			}
 			if(rs.getString("question_option3").equals(polling.getOptions()) == true)
 			{
-				int poll = rs.getInt("question_option3_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option3_poll = " + poll + " where question_id = " + polling.getId() + "");
+				int poll3 = rs.getInt("question_option3_poll");
+				poll3++;
+				template.update("UPDATE pollings SET question_option3_poll = " + poll3 + " where question_id = " + polling.getId() + "");
 			}
 			if(rs.getString("question_option4").equals(polling.getOptions()) == true)
 			{
-				int poll = rs.getInt("question_option4_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option4_poll = " + poll + " where question_id = " + polling.getId() + "");
+				int poll4 = rs.getInt("question_option4_poll");
+				poll4++;
+				template.update("UPDATE pollings SET question_option4_poll = " + poll4 + " where question_id = " + polling.getId() + "");
 			}
-			if(rs.getString("question_option5").equals(polling.getOptions()) == true)
-			{
-				int poll = rs.getInt("question_option5_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option5_poll = " + poll + " where question_id = " + polling.getId() + "");
-			}
-			if(rs.getString("question_option6").equals(polling.getOptions()) == true)
-			{
-				int poll = rs.getInt("question_option6_poll");
-				poll++;
-				template.update("UPDATE pollings SET question_option6_poll = " + poll + " where question_id = " + polling.getId() + "");
-			}
-			List<PollingsResult> pollingsResult =  template.query("SELECT * FROM pollings WHERE question_id = " + polling.getId() + "",new PollingsResultDataMapper());
-			this.pollingsResult = pollingsResult;
-			return pollingsResult;			
+			pollingsResult =  template.queryForObject("SELECT * FROM pollings WHERE question_id = " + polling.getId() + "",new PollingsResultDataMapper());
+			return pollingsResult;
 		}
 		return pollingsResult;
 	}

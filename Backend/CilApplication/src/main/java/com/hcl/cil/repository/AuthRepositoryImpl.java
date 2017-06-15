@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
+import com.hcl.cil.dao.AuthDao;
 import com.hcl.cil.model.Auth;
 import com.hcl.cil.model.User;
 

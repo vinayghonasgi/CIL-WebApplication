@@ -4,34 +4,27 @@ import java.util.ArrayList;
 
 public class Contact 
 {
-	private String id = "contact";
-	private String main;
-	private String sub;
-	private ArrayList<String> list = new ArrayList<String>();
+	private String contact_mainheading;
+	private String contact_subheading;
+	private ArrayList<String> contact_info;
+	public String getContact_mainheading() {
+		return contact_mainheading;
+	}
+	public void setContact_mainheading(String contact_mainheading) {
+		this.contact_mainheading = contact_mainheading;
+	}
+	public String getContact_subheading() {
+		return contact_subheading;
+	}
+	public void setContact_subheading(String contact_subheading) {
+		this.contact_subheading = contact_subheading;
+	}
+	public ArrayList<String> getContact_info() {
+		return contact_info;
+	}
+	public void setContact_info(ArrayList<String> contact_info) {
+		this.contact_info = contact_info;
+	}
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getMain() {
-		return main;
-	}
-	public void setMain(String main) {
-		this.main = main;
-	}
-	public String getSub() {
-		return sub;
-	}
-	public void setSub(String sub) {
-		this.sub = sub;
-	}
-	public ArrayList<String> getList() {
-		return list;
-	}
-	public void setList(ArrayList<String> list) {
-		this.list = list;
-	}
 	
 }

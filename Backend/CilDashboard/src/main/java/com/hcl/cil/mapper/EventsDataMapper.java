@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.hcl.cil.model.HclEventList;
 
 public class EventsDataMapper implements RowMapper<HclEventList>
-{
+{  
 	@Override
 	public HclEventList mapRow(ResultSet rs, int arg1) throws SQLException 
 	{

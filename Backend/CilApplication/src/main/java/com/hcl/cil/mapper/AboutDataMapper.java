@@ -10,15 +10,13 @@ import com.hcl.cil.model.About;
 
 public class AboutDataMapper implements RowMapper<About>
 {
-	private ArrayList<String> about_featureslist;
 
 	@Override
 	public About mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
-		about_featureslist = new ArrayList<String>();
+		ArrayList<String> about_featureslist = new ArrayList<>();
 		About aboutInfo = new About();
-		aboutInfo.setId(rs.getString("about_id"));
-		aboutInfo.setDesc(rs.getString("about_description"));
+		aboutInfo.setAbout_description(rs.getString("about_description"));
 		
 		String[] list = rs.getString("about_list").split("~");
 		for(int i = 0; i<list.length; i++)
@@ -26,9 +24,9 @@ public class AboutDataMapper implements RowMapper<About>
 			about_featureslist.add(list[i]);
 		}
 
-		aboutInfo.setList(about_featureslist);
-		aboutInfo.setMain(rs.getString("about_heading"));
-		aboutInfo.setSub(rs.getString("about_subheading"));
+		aboutInfo.setAbout_info(about_featureslist);
+		aboutInfo.setAbout_mainheading(rs.getString("about_heading"));
+		aboutInfo.setAbout_subheading(rs.getString("about_subheading"));
 		return aboutInfo;
 	}
 }

@@ -1,7 +1,5 @@
 package com.hcl.cil.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,7 @@ public class PollingsServiceImpl implements PollingsServiceDao {
 	private PollingsDao pollingsDao;
 
 	@Override
-	public List<PollingsResult> getProjectsService(PollingRequest polling) 
+	public PollingsResult getProjectsService(PollingRequest polling) 
 	{
 		return pollingsDao.getPollingsData(polling);
 	}

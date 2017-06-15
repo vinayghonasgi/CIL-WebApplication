@@ -4,25 +4,20 @@ import java.util.ArrayList;
 
 public class Services 
 {
-	private  String id = "service";
-	private  String main;
-	private  ArrayList<String> list = new ArrayList<String>();
-	public String getId() {
-		return id;
+	private  String service_mainheading;
+	private  ArrayList<ServicesData> service_offering;
+	public String getService_mainheading() {
+		return service_mainheading;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setService_mainheading(String service_mainheading) {
+		this.service_mainheading = service_mainheading;
 	}
-	public String getMain() {
-		return main;
+	public ArrayList<ServicesData> getService_offering() {
+		return service_offering;
 	}
-	public void setMain(String main) {
-		this.main = main;
+	public void setService_offering(ArrayList<ServicesData> service_offering) {
+		this.service_offering = service_offering;
 	}
-	public ArrayList<String> getList() {
-		return list;
-	}
-	public void setList(ArrayList<String> list) {
-		this.list = list;
-	}
+	
+	
 }

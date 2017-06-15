@@ -13,12 +13,9 @@ public class HeaderDataMapper implements RowMapper<Header>
 	public Header mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
 		Header headerInfo = new Header();
-		headerInfo.setId(rs.getString("header_id"));
-		headerInfo.setMain(rs.getString("header_heading"));
-		headerInfo.setSub(rs.getString("header_subheading"));
-		headerInfo.setDesc(rs.getString("header_description"));
-		headerInfo.setImg(rs.getString("header_img"));
-		
+		headerInfo.setHeader_mainheading(rs.getString("header_heading"));
+		headerInfo.setHeader_subheading(rs.getString("header_subheading"));
+		headerInfo.setHeader_description(rs.getString("header_description"));		
 		return headerInfo;
 	}
 }

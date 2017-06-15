@@ -11,6 +11,7 @@ public class HclEventList
 	private  String event_audience;
 	private  String event_agenda;
 	private  String event_status;
+	
 	public int getEvent_id() {
 		return event_id;
 	}
@@ -65,6 +66,7 @@ public class HclEventList
 	public void setEvent_status(String event_status) {
 		this.event_status = event_status;
 	}
+	
 	
 	
 }

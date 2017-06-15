@@ -26,8 +26,13 @@ public class DashboardService
 		List<HclEventList> eventsInfo= repository.getEventsData();
 		dashboard.setEvents(eventsInfo);
 		
-		List<HclPollingList> pollingsInfo= repository.getPollingsData();
+		HclPollingList pollingsInfo = repository.getPollingsData();
 		dashboard.setPolling(pollingsInfo);
+		
+		UserResponse model = repository.getResponse();
+		dashboard.setModel(model);
+		
 		return dashboard;
-	} 
+	}
+	
 }

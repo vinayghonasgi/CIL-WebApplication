@@ -50,26 +50,7 @@ public class SimpleFilter extends ZuulFilter
             String headerName = (String)headerNames.nextElement();
             logger.debug("Header Name - " + headerName + ", Value - " + request.getHeader(headerName));
         }
-
-        Enumeration params = request.getParameterNames();
-        while(params.hasMoreElements()){
-            String paramName = (String)params.nextElement();
-            logger.debug("Parameter Name - "+paramName+", Value - "+request.getParameter(paramName));
-        }
-
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (int i = 0; i < cookies.length; i++) {
-                logger.debug("Cookie Name - "+ cookies[i].getName() +", Value - "+cookies[i].getValue());
-            }
-        }
         
-//        RequestContext ctx = RequestContext.getCurrentContext();
-//
-//        // Alter ignored headers as per: https://gitter.im/spring-cloud/spring-cloud?at=56fea31f11ea211749c3ed22
-//        Set<String> headers = (Set<String>) ctx.get("ignoredHeaders");
-//        // We need our JWT tokens relayed to resource servers
-//        headers.remove("authorization");
 		return null;
     }
 }

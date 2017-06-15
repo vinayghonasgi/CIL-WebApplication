@@ -1,3 +1,5 @@
 com\hcl\cil\zuul\filter\pre\SimpleFilter.class
-com\hcl\cil\zuul\ApplicationZuul.class
+com\hcl\cil\fallback\FallbackProvider$1.class
 com\hcl\cil\zuul\filter\post\AccessLogFilter.class
+com\hcl\cil\zuul\ApplicationZuul.class
+com\hcl\cil\fallback\FallbackProvider.class

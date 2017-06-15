@@ -7,6 +7,5 @@ import com.hcl.cil.model.ProjectsDesc;
 
 public interface ProjectsDao
 {
-	
 	public List<ProjectsDesc> getProjectsData(ProjectIdRequest projectid);
 }

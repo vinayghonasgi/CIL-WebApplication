@@ -7,25 +7,30 @@ import java.util.ArrayList;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.hcl.cil.model.Services;
+import com.hcl.cil.model.ServicesData;
 
 public class ServiceDataMapper implements RowMapper<Services>
 {
-	private ArrayList<String> service_list;
 	@Override
 	public Services mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
-		service_list = new ArrayList<String>();
+		String[] str;
+		ServicesData sdata;
+		
+		ArrayList<ServicesData> success_data = new ArrayList<>();
 		Services serviceInfo = new Services();
-		serviceInfo.setId(rs.getString("service_id"));
-		serviceInfo.setMain(rs.getString("service_heading"));
+		serviceInfo.setService_mainheading(rs.getString("service_heading"));
 		
-		String[] list = rs.getString("service_list").split("~");
-		for(int i = 0; i<list.length; i++)
-		{
-			service_list.add(list[i]);
+		String[] slist = rs.getString("service_list").split("#");
+		for(int i = 0; i<slist.length; i++)
+		{	
+			sdata = new ServicesData();
+ 			str = slist[i].split("~");
+ 			sdata.setService_heading(str[0]);
+ 			sdata.setService_description(str[1]);
+ 			success_data.add(sdata);	
 		}
-		
-		serviceInfo.setList(service_list);
+		serviceInfo.setService_offering(success_data);
 		return serviceInfo;
 	}
 }

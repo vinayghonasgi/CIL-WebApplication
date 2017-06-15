@@ -13,10 +13,9 @@ public class StrategicDataMapper implements RowMapper<Strategic>
 	public Strategic mapRow(ResultSet rs, int arg1) throws SQLException 
 	{
 		Strategic strategicInfo = new Strategic();
-		strategicInfo.setId(rs.getString("strategic_id"));
-		strategicInfo.setMain(rs.getString("strategic_heading"));
-		strategicInfo.setLogo(rs.getString("strategic_logo"));
-		strategicInfo.setStatus(rs.getString("strategic_status"));
+		strategicInfo.setStrategic_mainheading(rs.getString("strategic_heading"));
+		strategicInfo.setStrategic_logo(rs.getString("strategic_logo"));
+		strategicInfo.setStrategic_status(rs.getString("strategic_status"));
 		return strategicInfo;
 	}
 }

@@ -10,7 +10,8 @@ public class Dashboard
 	private List<HclProjectList> externalproject;
 	private List<HclProjectList> internalproject;
 	private List<HclEventList> events;
-	private List<HclPollingList> polling;
+	private HclPollingList polling;
+	private UserResponse model;
 	
 	public List<HclProjectList> getExternalproject() 
 	{
@@ -36,14 +37,20 @@ public class Dashboard
 	{
 		this.events = events;
 	}
-	public List<HclPollingList> getPolling() 
+	public HclPollingList getPolling() 
 	{
 		return polling;
 	}
-	public void setPolling(List<HclPollingList> polling) 
+	public void setPolling(HclPollingList polling) 
 	{
 		this.polling = polling;
 	}
-	
-	
+	public UserResponse getModel() 
+	{
+		return model;
+	}
+	public void setModel(UserResponse model) 
+	{
+		this.model = model;
+	}	
 }

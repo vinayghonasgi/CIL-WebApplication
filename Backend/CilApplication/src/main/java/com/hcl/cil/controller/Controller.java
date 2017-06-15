@@ -1,6 +1,5 @@
 package com.hcl.cil.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import  org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.hcl.cil.dao.AuthService;
+import com.hcl.cil.dao.ChangePassService;
+import com.hcl.cil.dao.SecurityDetailsService;
 import com.hcl.cil.model.Auth;
 import com.hcl.cil.model.ChangePass;
 import com.hcl.cil.model.Content;
@@ -28,10 +31,7 @@ import com.hcl.cil.security.AuthJWTResponseRepository;
 import com.hcl.cil.security.ForgotJWT;
 import com.hcl.cil.security.ForgotJWTRequestRepository;
 import com.hcl.cil.security.ForgotJWTResponseRepository;
-import com.hcl.cil.service.AuthService;
-import com.hcl.cil.service.ChangePassService;
 import com.hcl.cil.service.ContentService;
-import com.hcl.cil.service.SecurityDetailsService;
 
 
 @CrossOrigin
@@ -88,8 +88,7 @@ public class Controller
 	
 	public HttpHeaders headers;
 	
-	public Cookie cookie;
-	
+	private static final String TRUE = "TRUE";
 	
 	@RequestMapping(value="/landing", method=RequestMethod.GET, produces = "application/json")	
     public ResponseEntity<Content> getLanding() 
@@ -101,7 +100,7 @@ public class Controller
     public ResponseEntity<Auth> getAuthentication(@RequestBody User user) 
     {
 		authService.getAuthenticationService(user);
-		if(auth.getResponse().equals("TRUE") == true)
+		if(auth.getResponse().equals(TRUE) == true)
 		{			
 			authJwtResponse.setAuthJWTData(user);			
 			headers = new HttpHeaders();
@@ -135,7 +134,7 @@ public class Controller
     public ResponseEntity<SecurityDetails> getForgot(@RequestBody ForgotUser fuser) 
     {
 		securityDetailsService.getSecurityDetailsService(fuser);	
-		if(securityDetails.getResponse().equals("TRUE") == true)
+		if(securityDetails.getResponse().equals(TRUE) == true)
 		{
 			forgotJwtResponse.setForgotJWTData(fuser);
 			securityDetails.setToken(forgotJWT.getForgotJwtEncryp());
@@ -156,7 +155,7 @@ public class Controller
 		if(headerUser.getUsername() != null)
 		{
 			model = changePassService.getChangePassService(headerUser, changepass);
-			if(model.getResponse().equals("TRUE") == true)
+			if(model.getResponse().equals(TRUE) == true)
 			{
 				model.setResponse(headerUser.getUsername() +  " Your password has been changed!!");
 				model.setToken("null");

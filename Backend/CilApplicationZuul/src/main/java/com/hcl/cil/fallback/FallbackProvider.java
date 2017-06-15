@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FallbackProvider implements ZuulFallbackProvider
 {
-
+	
 	@Override
 	public ClientHttpResponse fallbackResponse() 
 	{
@@ -36,7 +36,8 @@ public class FallbackProvider implements ZuulFallbackProvider
             }
 
             @Override
-            public void close() {
+            public void close() 
+            {
 
             }
 

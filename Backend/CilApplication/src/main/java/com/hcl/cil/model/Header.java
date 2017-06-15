@@ -2,51 +2,27 @@ package com.hcl.cil.model;
 
 public class Header 
 {
-	private  String id;
-	private  String main;  
-	private  String sub;
-	private  String desc;
-	private  String img;
-	
-	public String getId() 
-	{
-		return id;
+	private  String header_mainheading;  
+	private  String header_subheading;
+	private  String header_description;
+	public String getHeader_mainheading() {
+		return header_mainheading;
 	}
-	public void setId(String id) 
-	{
-		this.id = id;
+	public void setHeader_mainheading(String header_mainheading) {
+		this.header_mainheading = header_mainheading;
 	}
-	public String getMain() 
-	{
-		return main;
+	public String getHeader_subheading() {
+		return header_subheading;
 	}
-	public void setMain(String main) 
-	{
-		this.main = main;
+	public void setHeader_subheading(String header_subheading) {
+		this.header_subheading = header_subheading;
 	}
-	public String getSub() 
-	{
-		return sub;
+	public String getHeader_description() {
+		return header_description;
 	}
-	public void setSub(String subHeading) 
-	{
-		this.sub = subHeading;
-	}
-	public String getDesc() 
-	{
-		return desc;
-	}
-	public void setDesc(String desc) 
-	{
-		this.desc = desc;
-	}
-	public String getImg() 
-	{
-		return img;
-	}
-	public void setImg(String img) 
-	{
-		this.img = img;
+	public void setHeader_description(String header_description) {
+		this.header_description = header_description;
 	}
 	
+		
 }
