@@ -3,7 +3,8 @@ import Modal from 'react-bootstrap/lib/Modal';
 import ForgotpwdModal from './forgotpwd-modal';
 import {connect} from 'react-redux'
 import  { bindActionCreators } from 'redux'
-import { getUser, getDashboard } from '../../../actions/index'
+import { getUser } from '../../../actions/index'
+import { getDashboard } from '../../../actions/dashboardActions'
 import { browserHistory } from 'react-router';
 import TextFieldGroup from '../../../common/textFieldGroup';
 import validateInput from '../../../validations/login';
@@ -18,14 +19,20 @@ class LoginModal extends React.Component {
       errors: {},
       isLoading: false,
       invalid: false,
-      loginError: '',
+      loginError: "",
       showModalFpwd: false,
     }
 
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.closeFpwd = this.closeFpwd.bind(this);
-    this.openFpwd = this.openFpwd.bind(this);
+    this.openFpwd = this.openFpwd.bind(this);    
+  }
+  componentWillReceiveProps() {
+      /*if(this.props.dashboard){
+          console.log("here",this.props.dashboard)
+        this.setState({ loginError: "Session Expired! Please login again" }); 
+    }*/
   }
 
     closeFpwd() {
@@ -55,19 +62,26 @@ class LoginModal extends React.Component {
          if (this.isValid()) {
              this.setState({ errors: {}, isLoading: true });
              
-             browserHistory.push('/dashboard');
-                /*
+             //browserHistory.push('/dashboard');
+                
              this.props.getUser({username: this.state.username, password: this.state.password})
                 .then((res) => {                       
                     if(res.data.response.toLowerCase() === "true"){                        
-                        browserHistory.push('/dashboard');
-                        alert("success login")
+                        console.log(res.data);
+                        if(localStorage.userlogin) {
+                            localStorage.removeItem("userlogin");
+                        }                        
+                        localStorage.setItem("userlogin", res.data.token);
+                        this.props.getDashboard();
+                        /*if(this.props.dashboard){
+                            this.setState({ loginError : this.props.invalidLogin });
+                        }*/                        
                     }
                     else this.setState({ loginError : "Invalid username or password" });
                 })
                 .catch((error) => {
                     this.setState({ loginError : error });
-                })*/
+                })
          }       
         
     }
@@ -123,7 +137,8 @@ class LoginModal extends React.Component {
 function mapStateToProps(state) {
     return {
         user: state.loginUser,
-        //dashboard: state.dashboard
+        dashboard: state.dashboard,
+        
     };
 }
 

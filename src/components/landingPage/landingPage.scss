@@ -3,7 +3,7 @@ h4 {
       line-height: 1.375em;
       color: #303030;
       font-weight: 400;
-      margin-bottom: 30px;
+      margin-bottom: 5px;
   }
   .jumbotron {
       /*background-color: #f4511e;
@@ -19,12 +19,33 @@ h4 {
   padding: 7px 10px;
   }
   .container-fluid.padContainer {
-      padding: 130px 50px 130px 60px;
+    padding: 100px 50px 0px 60px;
   }
   .container-fluid.landing {
-    padding: 85px 50px 0px 60px;
+    padding: 25px 50px 0px 60px;
     
   }
+
+    .container-fluid.landing-offering {
+    padding: 0px 50px 0px 60px;
+    
+  }
+
+    .container-fluid.landing-strategic{
+       padding: 25px 50px 0px 60px;
+    }
+
+    .container-fluid.landing-contact{
+       padding: 25px 50px 0px 60px;
+    }
+    .container-fluid.landing-footer{
+       padding: 0px 50px 0px 60px;
+    }
+    
+    .container-fluid.landing-success{
+       padding: 35px 50px 0px 60px;
+    }
+
   .strategiccontainer-fluid {
     padding: 0px 10px 0px 10px;
     
@@ -51,7 +72,7 @@ h4 {
     font-size: 2.7em;
     color: #333940;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-transform: uppercase;
   } 
   .feature-list ul, .feature-list ol, .feature-list li{
@@ -343,12 +364,6 @@ ol {
     padding-right: 5px;
     padding-left: 5px;
 }
-.social li.facebook:hover, .social li.google-plus:hover, .social li.linkedin:hover, .social li.twitter:hover {
-    border-radius: 100%;
-    border: 1px solid #fff;
-    opacity: 1;
-    -webkit-filter: grayscale(0);
-}
 .social li.facebook, .social li.google-plus, .social li.linkedin, .social li.twitter, .social li.youtube {
     border-radius: 100%;
     border: 1px solid #fff;
@@ -393,7 +408,8 @@ h1.color-primary{
     margin-bottom: 2rem;
 }
 .feature-list {
-    margin-bottom: 60px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     margin-left: 30px;
 }
 .feature-list li {
@@ -580,14 +596,7 @@ a{
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+
 .sectionLink:hover .locateArrow {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$value)";
     filter: alpha(opacity=1);
@@ -621,6 +630,7 @@ a{
     color: #ffffff;
     margin: 25px 0;
     font-size: 16px;
+    opacity: .71;
 }
 .container{
   width: 100%;
@@ -701,4 +711,26 @@ a{
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
+    color: #818181;
+}
+.panel-body.landing {
+    background: white;
+}
+
+
+.soc-link:hover a{
+    background-color: transparent;
+}
+#arrow{
+  font-size: 25px;
+    margin-bottom: 20px;
+    color: #582a29;
+}
+.valuesHeading{
+ color: #fff;
+ opacity: .90;
+}
+
+.invalid-text {
+    color: red;
 }

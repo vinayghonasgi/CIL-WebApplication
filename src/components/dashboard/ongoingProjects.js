@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { selectProject } from '../../actions/index'
+import { selectProject } from '../../actions/dashboardActions'
 import  { bindActionCreators } from 'redux'
-import ActiveProject from './activeProject'
 import { Link } from 'react-router'
 import {Tabs, Tab} from 'react-bootstrap'
-//import Tab from 'react-bootstrap'
 
 class OngoingProjects extends Component {
-    callSelectProject (id) {
-        console.log("hi")
+    callSelectProject (id) {        
         this.props.selectProject({id : id})
+        this.props.projectDetails();
     }
     render() {        
         return (            
@@ -21,16 +19,16 @@ class OngoingProjects extends Component {
                   <div>
                       <Tabs defaultActiveKey={1} animation={false} id="projects">
                         <Tab eventKey={1} title="Internal projects">
-                            <ul className="project-list">
+                            <ul className="project-list cilFont14">
                                 {this.props.dashboard.dashboard.internalproject.map((project, i) => {
-                                    return <li key={i}><Link to="dashboard/projects" onClick={() => this.callSelectProject(project.id)}>{project.project_name}</Link></li>
+                                    return <li key={i}><Link onClick={() => this.callSelectProject(project.id)}>{project.project_name}</Link></li>
                                 })}
                             </ul>                                
                         </Tab>
                         <Tab eventKey={2} title="External projects">
-                            <ul className="project-list">
+                            <ul className="project-list cilFont14">
                                 {this.props.dashboard.dashboard.externalproject.map((project, i) => {
-                                    return <li key={i}><Link to="dashboard/projects" onClick={() => this.callSelectProject(project.id)}>{project.project_name}</Link></li>
+                                    return <li key={i}><Link onClick={() => this.callSelectProject(project.id)}>{project.project_name}</Link></li>
                                 })}
                             </ul>
                         </Tab>                        

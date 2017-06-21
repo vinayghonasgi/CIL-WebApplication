@@ -1,19 +1,18 @@
 import React from 'react'
-import Greetings from '../Greetings'
  
 export default class Jumbotron extends React.Component {
   
    render() {
     var jumboBg= { backgroundImage: 'url(./src/assets/images/CIL_BG.jpg)' };
         return (
-        <div className="jumbotron bg adjustJumbo text-center">
+        <div   id="myPage" className="jumbotron bg adjustJumbo text-center">
             <div className="container-fluid padContainer" style={jumboBg} >
                 <div className="row">
                   <div className="col-sm-12 header-content">
-                       <h1>Co-Innovation lab</h1>
-                       <p className="secTitle">A vision shared, is value multiplied</p>
+                       <h1>{this.props.data.header_mainheading}</h1>
+                       <p className="secTitle">{this.props.data.header_subheading}</p>
                        <p className="thrTitle">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        {this.props.data.header_description}
                        </p>
                   </div>
                 </div>

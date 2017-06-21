@@ -3,16 +3,16 @@ import React from 'react'
 export default class ContactUs extends React.Component {
    render() {
         return (
-<div id="contact" className="container-fluid landing">
-         <h2 className="text-center">CONTACT</h2>
+   <div id="contact" className="container-fluid landing-contact">
+         <h2 className="text-center">{this.props.data.contact_mainheading}</h2>
 		 <hr/>
          <div className="row">
             <div className="col-sm-5">
-               <p>Contact us and we'll get back to you within 24 hours.</p>
+               <p>{this.props.data.contact_subheading}</p>
 			   <br/>
-               <p><span className="glyphicon glyphicon-map-marker"></span>Pune, India</p>
-               <p><span className="glyphicon glyphicon-phone"></span> +91 1802545456</p>
-               <p><span className="glyphicon glyphicon-envelope"></span> CoInnovationLab@hcl.com</p>
+               <p><span className="fa fa-map-marker"></span> {this.props.data.contact_info[0]}</p>
+               <p><span className="fa  fa-mobile-phone"></span> {this.props.data.contact_info[1]}</p>
+               <p><span className="glyphicon glyphicon-envelope"></span> {this.props.data.contact_info[2]}</p>
             </div>
             <div className="col-sm-7 slideanim">
                <div className="row">

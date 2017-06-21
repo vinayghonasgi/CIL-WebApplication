@@ -1,89 +1,56 @@
 import axios from 'axios';
-import { PROJECT_DATA, DASHBOARD } from '../constants';
 import {browserHistory} from 'react-router';
+import { LANDING_PAGE, FORGOT_PWD, LOGOUT, RESET_PWD } from '../constants';
+
+
 export const selectUser = (user) => {
     return {
         type: "USER_SELECTED",
         payload: user
     }
 }
-
-export const selectProject = (project) => {     
-    return dispatch => {
-        console.log("insidde async", project)
-        axios.post(PROJECT_DATA, project)
-            .then((json) => {
-                console.log("inside action",json.data);
-                 dispatch({
-                    type: "PROJECT_SELECTED",
-                    payload: json.data
-                    })
-            })
+export const showInvalidLogin = () => {
+    return {
+        type: "SHOW_INVALID_LOGIN",
+        payload: true
+    }
+}
+export const hideInvalidLogin = () => {
+    return {
+        type: "HIDE_INVALID_LOGIN",
+        payload: false
     }
 }
 
-export const getDashboard = () => {
-    return dispatch => {
-        console.log("insidde getDashboard action")
-       // axios.get('/src/data/dashboard.json')
-       axios.get('http://10.118.4.42:8763/cil/dashboard')
-            .then((json) => {
-                console.log("inside getDashboard res action",json.data);
+export const getLandingPage = () => {    
+    return dispatch => {           
+        axios.get(LANDING_PAGE)
+            .then((json) => { 
+            console.log(json.data)               
                  dispatch({
-                    type: "GET_DASHBOARD",
+                    type: "LOAD_LANDING_PAGE",
                     payload: json.data
                     })
             })
-    }
-    /*return dispatch => {
-        console.log("inside getDashboard")
-        return axios.get('/src/data/dashboard.json');
-    }*/
+    }    
 }
+
+
+
 
 
 export const getUser = (user) => {
     
     return dispatch => {
         console.log("insidde async", user)
-        return axios.post('http://10.118.4.39:8762/cil/loginpage', user);
-    }/*{
-        console.log("insidde async")
-        
-        //axios.post('http://10.118.4.33:8762/cil/loginpage', {"username" : "gajendra.u","password" : "gajendra91"})
-        axios.get('https://api.github.com/users')
-            .then((json) => {
-                
-                if(json.data.id != null) {
-                    console.log("inside action",json.data);
-                    dispatch( {
-                    type: "GET_USER",
-                    payload: json.data
-                    })
-                }
-                else {
-                        
-                        console.log("inside pending",json.data);
-                        dispatch( {
-                         type: "USER_PENDING",
-                            payload: "User is pending"
-                        })
-                    }
-            })
-            .catch((error) => {
-                dispatch( {
-                    type: "USER_NOT_RECEIVED",
-                    payload: error
-                })
-            })
-    }*/
+        return axios.post('http://10.118.4.42:8764/api/cilapplication/cil/login', user);
+    }
 }
 
 export const submitUser = (user) => {
     
     return dispatch => {
-        axios.post('http://10.118.4.39:8762/cil/loginpage', {"username" : "gajendra.u","password" : "gajendra91"})
-        //axios.get('https://api.github.com/users')
+        axios.post('http://10.118.4.39:8762/cil/loginpage', {"username" : "gajendra.u","password" : "gajendra91"})        
             .then((json) => {
                 
                 if(json.data.id != null) {

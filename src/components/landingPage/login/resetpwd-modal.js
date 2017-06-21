@@ -2,8 +2,12 @@ import React from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
 import TextFieldGroup from '../../../common/textFieldGroup';
 import validateInput from '../../../validations/reEnterPwd';
+import {connect} from 'react-redux'
+import  { bindActionCreators } from 'redux'
+import { resetPassword } from '../../../actions/loginActions'
+import PwdResetSuccess from './pwdResetSuccess'
 
-export default class ResetpwdModal extends React.Component {
+class ResetpwdModal extends React.Component {
 	constructor (props) {
         super(props);
         this.state = {
@@ -43,8 +47,12 @@ export default class ResetpwdModal extends React.Component {
         submit() {
             if (this.isValid()) {
                 this.setState({ errors: {}, isLoading: true });
+                
+                this.props.resetPassword({newpass: this.state.password, confirmpass: this.state.confirmPassword, headers: {
+                    'forgotlogin': localStorage.forgotlogin,
+                    'Content-Type': 'application/json'
+                }})
                 this.openResetSuccess()
-                //this.props.changePassword({newpass: this.state.password, confirmpass: this.state.confirmPassword})
             }
                 /*if (this.isValid()) {
                     this.setState({ errors: {}, isLoading: true });
@@ -81,6 +89,7 @@ export default class ResetpwdModal extends React.Component {
                                 onChange={this.onChange}
                                 value={this.state.password}
                                 field="password"
+                                type="password"
                             />
                             <TextFieldGroup
                                 error={errors.confirmPassword}
@@ -88,6 +97,7 @@ export default class ResetpwdModal extends React.Component {
                                 onChange={this.onChange}
                                 value={this.state.confirmPassword}
                                 field="confirmPassword"
+                                type="password"
                             />                           
                            <input type="button" name="login" className="login loginmodal-submit" value="Reset Password" onClick={() => this.submit()}/>
                         </form>
@@ -95,10 +105,15 @@ export default class ResetpwdModal extends React.Component {
                           
                 </Modal> 
             </div>
-            
+            <PwdResetSuccess showModal={this.state.showModal} hideModal={this.closeResetSuccess}/>
     </div>
   );
     
    }
 }
 
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({resetPassword: resetPassword}, dispatch);
+}
+
+export default connect(null, matchDispatchToProps)(ResetpwdModal);

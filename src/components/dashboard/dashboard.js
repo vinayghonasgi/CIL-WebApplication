@@ -3,15 +3,35 @@ import './dashboard.scss'
 import OngoingProjects from './ongoingProjects'
 import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
-import { getDashboard } from '../../actions/index'
+import { getDashboard } from '../../actions/dashboardActions'
 import DashboardMenu from './dashboardMenu'
 import NewsLetter from './newsLetter'
 import Polling from './polling'
 import UpComingEvents from './upcomingEvents'
+import SideBar from './sideBar'
+import ProjectModal from './projectModal'
+
 
 class Dashboard extends React.Component {
-    componentWillMount () {
+    constructor(props) {
+      super(props);
+	  this.state = {
+        showModal: false
+      }
       this.props.getDashboard();
+      this.openProjectDetails = this.openProjectDetails.bind(this);
+      this.closeProjectDetails = this.closeProjectDetails.bind(this)
+   }
+
+   openProjectDetails () {
+        this.setState({showModal : true});
+   }
+   closeProjectDetails () {
+        this.setState({showModal : false});
+   }
+
+    componentWillMount () {
+      
     }
 
     
@@ -20,15 +40,18 @@ class Dashboard extends React.Component {
         if(!this.props.dashboard) {
             return (<div><h4>Loading Dashboard....</h4></div>);
         }
+        //else if(this.props.dashboard && ){}
         return (            
             <div>
                   <DashboardMenu />                    
-                  <div className="container-fluid">
+                  <SideBar />
+
+                  <div className="container-fluid container-p-l">
                     <div className="row space-top">
-                          <OngoingProjects />
-                          <div className="col-md-8">
+                          <OngoingProjects projectDetails={this.openProjectDetails}/>
+                          <div className="col-md-3">
                                 <div className="panel dashboard-panel panel-primary">
-                                  <div className="panel-heading dashboard">Newsletter</div>
+                                  <div className="panel-heading dashboard CIL-font">Newsletter</div>
                                   <div className="panel-body">
                                       
                                     <NewsLetter />
@@ -38,18 +61,13 @@ class Dashboard extends React.Component {
                           </div>
                       </div>
                       <div className="row space-top">
-                        {/*<div className="col-md-9">
-                          <div className="panel dashboard-panel panel-primary">
-                                  <div className="panel-heading dashboard">Upcoming Events</div>
-                                  <div className="panel-body">sdsf</div>
-                         </div>
-                        </div>*/}
+                        
                         <UpComingEvents eventData={this.props.dashboard.dashboard.events}/>
                         <Polling />
                         
                       </div>
                   </div>
-
+                  <ProjectModal showModal={this.state.showModal} hideModal={this.closeProjectDetails} projectData={this.props.project}/>
                 </div>
             
         );
@@ -61,7 +79,8 @@ class Dashboard extends React.Component {
 
 function mapStateToProps(state) {
     return {        
-        dashboard: state.dashboard
+        dashboard: state.dashboard,
+        project: state.activeProject
     };
 }
 

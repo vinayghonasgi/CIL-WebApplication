@@ -57,6 +57,10 @@ constructor (props) {
                     console.log("data here", res)
                     if(res.data.response.toLowerCase() === "true"){
                         this.setState({ userNameError : "" , username: '', secQuestions : res.data.questions});
+                        if(localStorage.forgotlogin) {
+                            localStorage.removeItem("forgotlogin");
+                        }                        
+                        localStorage.setItem("forgotlogin", res.data.token);
                         this.openSecques()
                     }
                     else {

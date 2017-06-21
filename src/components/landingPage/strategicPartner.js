@@ -3,7 +3,7 @@ import React from 'react'
 export default class StrategicPartner extends React.Component {
    render() {
         return (
-        <div id="success" className="container-fluid landing text-center bg-grey">
+        <div id="success" className="container-fluid landing-strategic text-center bg-grey">
 
             <h2 className="text-center">OUR STRATEGIC PARTNERS</h2>
           <hr/>   
@@ -11,14 +11,14 @@ export default class StrategicPartner extends React.Component {
                 <div className="strategic-row">
                     <div className="col-md-6">
                         <div className="panel panel-danger">
-                            <div className="panel-body">
+                            <div className="panel-body landing">
                               <img src="./src/assets/images/hcl.jpg" alt="HCL Group"></img>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="panel panel-success">
-                            <div className="panel-body">
+                            <div className="panel-body landing">
                                 <img src="./src/assets/images/DBGroup.png" alt="DB Group"></img>
                             </div>
                         </div>
